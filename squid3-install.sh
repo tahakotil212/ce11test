@@ -7,35 +7,24 @@ if cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 18.04"; then
     touch /etc/squid/passwd
     /bin/rm -f /etc/squid/squid.conf
     /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/londonertech/createproxy/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
+    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/tahakotil212/ce11test/blob/master/squid.conf
+    /sbin/iptables -I INPUT -p tcp --dport 3129 -j ACCEPT
+    /sbin/iptables-save
+       /sbin/iptables -I INPUT -p tcp --dport 3130 -j ACCEPT
+    /sbin/iptables-save
+       /sbin/iptables -I INPUT -p tcp --dport 3131 -j ACCEPT
+    /sbin/iptables-save
+    /sbin/iptables -I INPUT -p tcp --dport 3132 -j ACCEPT
+    /sbin/iptables-save
+    /sbin/iptables -I INPUT -p tcp --dport 3133 -j ACCEPT
+    /sbin/iptables-save
+    /sbin/iptables -I INPUT -p tcp --dport 3134 -j ACCEPT
+    /sbin/iptables-save
+    /sbin/iptables -I INPUT -p tcp --dport 3135 -j ACCEPT
     /sbin/iptables-save
     service squid restart
     systemctl enable squid
-elif cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 16.04"; then
-    /usr/bin/apt update
-    /usr/bin/apt -y install apache2-utils squid3
-    touch /etc/squid/passwd
-    /bin/rm -f /etc/squid/squid.conf
-    /usr/bin/touch /etc/squid/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/londonertech/createproxy/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
-    /sbin/iptables-save
-    service squid restart
-    update-rc.d squid defaults
-elif cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04"; then
-    /usr/bin/apt update
-    /usr/bin/apt -y install apache2-utils squid3
-    touch /etc/squid3/passwd
-    /bin/rm -f /etc/squid3/squid.conf
-    /usr/bin/touch /etc/squid3/blacklist.acl
-    /usr/bin/wget --no-check-certificate -O /etc/squid3/squid.conf https://raw.githubusercontent.com/londonertech/createproxy/master/squid.conf
-    /sbin/iptables -I INPUT -p tcp --dport 3128 -j ACCEPT
-    /sbin/iptables-save
-    service squid3 restart
-    ln -s /etc/squid3 /etc/squid
-    #update-rc.d squid3 defaults
-    ln -s /etc/squid3 /etc/squid
+
 elif cat /etc/os-release | grep PRETTY_NAME | grep "jessie"; then
     # OS = Debian 8
     /bin/rm -rf /etc/squid
