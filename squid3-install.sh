@@ -9,19 +9,12 @@ if cat /etc/os-release | grep PRETTY_NAME | grep "Ubuntu 18.04"; then
     /usr/bin/touch /etc/squid/blacklist.acl
     /usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://raw.githubusercontent.com/tahakotil212/ce11test/blob/master/squid.conf
     /sbin/iptables -I INPUT -p tcp --dport 3129 -j ACCEPT
-    /sbin/iptables-save
        /sbin/iptables -I INPUT -p tcp --dport 3130 -j ACCEPT
-    /sbin/iptables-save
        /sbin/iptables -I INPUT -p tcp --dport 3131 -j ACCEPT
-    /sbin/iptables-save
     /sbin/iptables -I INPUT -p tcp --dport 3132 -j ACCEPT
-    /sbin/iptables-save
     /sbin/iptables -I INPUT -p tcp --dport 3133 -j ACCEPT
-    /sbin/iptables-save
     /sbin/iptables -I INPUT -p tcp --dport 3134 -j ACCEPT
-    /sbin/iptables-save
     /sbin/iptables -I INPUT -p tcp --dport 3135 -j ACCEPT
-    /sbin/iptables-save
     service squid restart
     systemctl enable squid
 
